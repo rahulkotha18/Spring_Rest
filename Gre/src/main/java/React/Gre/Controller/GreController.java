@@ -29,26 +29,41 @@ public class GreController {
     {
         return  wordsRepository.findAll();
     }
+
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("users")
     public List<Users> getAllUsers()
     {
         return  usersRepository.findAll();
     }
 
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("user/{id}")
     public List<Words> getWordsOfUser(@PathVariable int id)
     {
         return  usersRepository.findById(id).get().getWords();
     }
+
+    @CrossOrigin("http://localhost:3000")
     @GetMapping("word/{id}")
     public List<Users> getUsersOfWord(@PathVariable int id)
     {
         return  wordsRepository.findById(id).get().getUsers();
     }
-    @GetMapping("auth")
-    public String getAuthorization()
+
+    @CrossOrigin("http://localhost:3000")
+    @PostMapping("auth")
+    public int getAuthorization(@RequestBody Users user)
     {
-        
+        List<Users> usersList=usersRepository.findAll();
+        for(Users current_user:usersList)
+        {
+            if(current_user.getName().equals(user.getName()) && current_user.getPassword().equals(user.getPassword()) )
+            {
+                return current_user.getId() ;
+            }
+        }
+        return  -1;
     }
 
 }

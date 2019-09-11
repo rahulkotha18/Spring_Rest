@@ -46,6 +46,16 @@ public class Users {
         this.name = name;
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     @JsonIgnore
     @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
