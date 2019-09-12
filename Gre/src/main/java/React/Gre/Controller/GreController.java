@@ -1,10 +1,11 @@
 package React.Gre.Controller;
-import React.Gre.Entity.Users;
-import React.Gre.Entity.Words;
-import React.Gre.Entity.WordsJackson;
+import React.Gre.Entity.*;
+import React.Gre.Service.UserServices;
+import React.Gre.Spring_Jpa.StatusRepository;
 import React.Gre.Spring_Jpa.UsersRepository;
 import React.Gre.Spring_Jpa.WordsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.expression.ExpressionException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -64,6 +65,32 @@ public class GreController {
             }
         }
         return  -1;
+    }
+    @Autowired
+    UserServices userServices;
+    @PostMapping("/user")
+    public Users addUser(@RequestBody Users users)
+    {
+        usersRepository.save(users);
+        return users;
+    }
+    @Autowired
+    StatusRepository statusRepository;
+
+    @PostMapping("/addWord")
+    public String addWord(@RequestBody token token)
+    {
+        Status st=new Status();
+        st.setTokenid(token);
+        statusRepository.save(st);
+        return "success";
+    }
+    @PostMapping("/delWord")
+    public String delWord(@RequestBody token token)
+    {
+        Status s = statusRepository.findByTokenid(token).orElseThrow(()->new ExpressionException("Not Found"));
+        statusRepository.delete(s);
+        return "success";
     }
 
 }

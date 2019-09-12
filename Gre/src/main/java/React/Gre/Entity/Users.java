@@ -1,7 +1,10 @@
 package React.Gre.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.springframework.web.bind.annotation.PostMapping;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 @JsonIgnoreProperties
 @Entity
@@ -63,7 +66,14 @@ public class Users {
             joinColumns ={ @JoinColumn(name = "u_id")},
             inverseJoinColumns = {@JoinColumn(name = "w_id")}
     )
-    private List<Words> words;
+    private List<Words> words=new ArrayList<>();
+
+
+    public String addWord(Words word)
+    {
+        words.add(word);
+        return "added";
+    }
 
     public List<Words> getWords() {
         return words;

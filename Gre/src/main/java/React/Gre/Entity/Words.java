@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 @JsonIgnoreProperties
 @Entity
@@ -56,7 +57,7 @@ public class Words {
             joinColumns = {@JoinColumn(name = "w_id")},
             inverseJoinColumns = {@JoinColumn(name = "u_id")}
     )
-    private List<Users> users;
+    private List<Users> users = new ArrayList<>();
 
     public List<Users> getUsers() {
         return users;

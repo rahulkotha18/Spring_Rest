@@ -4,7 +4,6 @@ import { tsConstructorType } from '@babel/types';
 import {Spinner,Navbar,NavbarBrand} from 'reactstrap'
 import { Button,Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
 class UploadScreen extends Component {
     constructor(props)
     {
@@ -59,7 +58,7 @@ class UploadScreen extends Component {
       </NavbarBrand>
   </Navbar>
   </div>
-            <ul class="list-group">
+            <ul className="list-group">
             {x.map(data=>{
                 return (
                     <div>
@@ -81,13 +80,12 @@ class UploadScreen extends Component {
                     <Box m={2}/>
                     <h2>Welcome</h2>
                 </div>
-                <div> 
+                <div className="Pad"> 
                 <Button onClick={this.changeState} variant="contained" color="primary">
                     Show words      </Button>
-                    <Box l={2}/>
                 <Button onClick={this.changeState} variant="contained" color="primary">
                     learnt words      </Button>
-                    </div>
+                </div>
                 {
                     this.state.learnt ?
                     (this.words(this.state.all)):
