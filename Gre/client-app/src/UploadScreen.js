@@ -24,7 +24,7 @@ class UploadScreen extends Component {
                 this.setState({all:response.data})
                 
             })
-            var url="http://localhost:8080/user/"+this.props.id
+            var url="http://localhost:8080/user/"+this.props.userid
             axios.get(url)
         .then(response=>
             {

@@ -10,7 +10,6 @@ public class token implements Serializable {
 
     private int u_id;
     private int w_id;
-
     public int getU_id() {
         return u_id;
     }

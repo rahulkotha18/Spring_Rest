@@ -24,35 +24,34 @@ public class GreController {
     UsersRepository usersRepository;
     @Autowired
     WordsRepository wordsRepository;
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @GetMapping("words")
     public List<Words> getAllWords()
     {
         return  wordsRepository.findAll();
     }
 
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @GetMapping("users")
     public List<Users> getAllUsers()
     {
         return  usersRepository.findAll();
     }
 
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @GetMapping("user/{id}")
     public List<Words> getWordsOfUser(@PathVariable int id)
     {
         return  usersRepository.findById(id).get().getWords();
     }
 
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @GetMapping("word/{id}")
     public List<Users> getUsersOfWord(@PathVariable int id)
     {
         return  wordsRepository.findById(id).get().getUsers();
     }
-
-    @CrossOrigin("http://localhost:3000")
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @PostMapping("auth")
     public int getAuthorization(@RequestBody Users user)
     {
@@ -66,31 +65,36 @@ public class GreController {
         }
         return  -1;
     }
+
     @Autowired
     UserServices userServices;
+
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @PostMapping("/user")
     public Users addUser(@RequestBody Users users)
     {
         usersRepository.save(users);
         return users;
     }
+
     @Autowired
     StatusRepository statusRepository;
-
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @PostMapping("/addWord")
-    public String addWord(@RequestBody token token)
+    public int addWord(@RequestBody token token)
     {
         Status st=new Status();
         st.setTokenid(token);
         statusRepository.save(st);
-        return "success";
+        return 1;
     }
+    @CrossOrigin({"http://localhost:3000","http://172.16.18.66:3000"})
     @PostMapping("/delWord")
-    public String delWord(@RequestBody token token)
+    public int delWord(@RequestBody token token)
     {
         Status s = statusRepository.findByTokenid(token).orElseThrow(()->new ExpressionException("Not Found"));
         statusRepository.delete(s);
-        return "success";
+        return 1;
     }
 
 }
