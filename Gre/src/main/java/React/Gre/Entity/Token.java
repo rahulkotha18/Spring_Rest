@@ -1,12 +1,11 @@
 package React.Gre.Entity;
 
 import javax.persistence.Embeddable;
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
 @Embeddable
-public class token implements Serializable {
+public class Token implements Serializable {
 
     private int u_id;
     private int w_id;
@@ -18,7 +17,7 @@ public class token implements Serializable {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        token token = (token) o;
+        Token token = (Token) o;
         return u_id == token.u_id &&
                 w_id == token.w_id;
     }
@@ -40,10 +39,10 @@ public class token implements Serializable {
         this.w_id = w_id;
     }
 
-    public token() {
+    public Token() {
     }
 
-    public token(int u_id, int w_id) {
+    public Token(int u_id, int w_id) {
         this.u_id = u_id;
         this.w_id = w_id;
     }

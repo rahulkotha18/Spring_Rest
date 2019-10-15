@@ -1,6 +1,6 @@
 package React.Gre.Entity;
 
-import React.Gre.Spring_Jpa.WordsRepository;
+import React.Gre.Spring_Jpa.WordsJPA;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -9,7 +9,7 @@ import java.io.File;
 @Component
 public class WordsJackson{
     @Autowired
-    WordsRepository wordsRepository;
+    WordsJPA wordsRepository;
     public void fillData() throws Exception
     {
         ObjectMapper mapper=new ObjectMapper();

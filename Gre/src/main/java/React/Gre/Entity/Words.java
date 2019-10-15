@@ -20,7 +20,6 @@ public class Words {
     public Words()
     {
     }
-
     public int getId() {
         return id;
     }

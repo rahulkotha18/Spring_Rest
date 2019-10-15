@@ -1,26 +1,23 @@
 package React.Gre.Entity;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-
 import javax.persistence.*;
-import java.io.Serializable;
 
 @Entity(name = "status")
 @Table(name = "status")
 public class Status{
 
     @EmbeddedId
-    private token tokenid;
+    private Token tokenid;
 
-    public Status(token tokenid) {
+    public Status(Token tokenid) {
         this.tokenid = tokenid;
     }
 
-    public token getTokenid() {
+    public Token getTokenid() {
         return tokenid;
     }
 
-    public void setTokenid(token tokenid) {
+    public void setTokenid(Token tokenid) {
         this.tokenid = tokenid;
     }
 
