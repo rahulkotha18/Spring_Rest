@@ -16,8 +16,8 @@ import java.util.List;
 @Service
 public class UserServices
 {
-//    @Autowired
-//    WordsJackson wordsJackson;
+    @Autowired
+    WordsJackson wordsJackson;
     @Autowired
     UsersJPA usersJPA;
     @Autowired
@@ -26,7 +26,7 @@ public class UserServices
     StatusJPA statusJPA;
     public String fill() throws Exception
     {
-        //wordsJackson.fillData();
+        wordsJackson.fillData();
         return "data is already filled";
     }
     @Transactional

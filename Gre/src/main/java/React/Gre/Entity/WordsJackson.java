@@ -13,7 +13,7 @@ public class WordsJackson{
     public void fillData() throws Exception
     {
         ObjectMapper mapper=new ObjectMapper();
-        Words e1[]=mapper.readValue(new File("/home/z/Desktop/Gre/data.json"),Words[].class);
+        Words e1[]=mapper.readValue(new File("/home/zadmin/Desktop/Spring_Rest/Gre/src/main/java/React/Gre/Utilities/data.json"),Words[].class);
         for(Words words:e1)
         {
             wordsRepository.save(words);

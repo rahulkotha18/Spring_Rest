@@ -9,8 +9,14 @@ import java.util.List;
 @RequestMapping("/")
 public class GreController
 {
+
         @Autowired
         UserServices userServices;
+        @CrossOrigin({"http://localhost:3000", "http://172.16.18.66:3000"})
+        @GetMapping("fillWords")
+        public String fillWords () throws Exception {
+                return userServices.fill();
+        }
         @CrossOrigin({"http://localhost:3000", "http://172.16.18.66:3000"})
         @GetMapping("words")
         public List<Words> getAllWords ()
